@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versets Bibliques Aléatoires</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0000FF; /* Fond bleu */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #FF0010; /* Titre rouge */
+            margin-bottom: 20px;
+        }
+        #verse {
+            font-size: 24px;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>VERSETS MIRES-VIE 
+    TRAVERSÉE 24-25</h1>
+    <div id="verse">Cliquez sur le bouton pour afficher un verset.</div>
+    <button id="generateButton">Afficher un verset</button>
+<body>
+    <h1>Mission Internationale de Restauration du Succès et de la Vie</h1>
+    <script>
+        const verses = [
+            "1 PIERRE 2 V 9", "JACQUES 4 V 8", "ROMAINS 6 V 19", "2 CORINTHIENS 7 V 1",
+            "1 PIERRE 5 V 5", "NOMBRES 6 V 24-26", "2 CORINTHIENS 9 V 8", "PROVERBE 10 V 22",
+            "HEBREUX 7 V 7", "1 THESSALONICIENS 4 V 3-4", "HEBREUX 12 V 14", "PHILIPPIENS 2 V 14-15",
+            "1 THESSALONICIENS 4 V 3", "2 TIMOTHEE 2 V 21", "PSAUME 119 V 2", "1 PIERRE 1 V 15-16",
+            "1 THESSALONICIENS 4 V 7", "3 JEAN 1 V 3", "MATTHIEU 5 V 9", "1 THESSALONICIENS 5 V 23",
+            "NOMBRE 6 V 24-26", "2 CORINTH 9 V 8", "COLOSSIEN 3 V 15", "JEREMIE 17 V 7-8",
+            "NOMBRES 6 V 24-26", "PSAUME 20 V 5", "PROVERBE 16 V 3", "DEUTERONOME 15 V 9-10",
+            "PSAUMES 90 V 17", "PSAUME 128 V 1-2", "DEUTERONOME 28 V 13", "COLOSSIENS 3 V 23",
+            "DEUTERONOME 28 V 11-12", "JEAN 6 V 27", "DEUTERONOME 15 V 6", "MALACHIE 3 V 10-11",
+            "DEUTERONOME 28 V 9-10", "MATTHIEU 9 V 3", "DEUTERONOME 28 V 9-10", "MALACHIE 3 V 3",
+            "DEUTERONOME 7 V 13-14", "JACQUES 1 V 25", "ZACHARIE 2 V 5", "HEBREUX 4 V 16",
+            "1 SAMUEL 2 V 8", "DEUTERONOME 28 V 11", "PSAUMES 75 V 1", "LEVITIQUE 26 V 3-4",
+            "LEVITIQUE 26 V 6-7", "EPHESIENS 4 V 32", "JEREMIE 30 V 17", "ESAIE 61 V 7",
+            "1 PIERRE 2 V 9", "ESAIE 12 V 2", "ESAIE 12 V 3", "PSAUMES 1 V 1-3",
+            "PSAUMES 18 V 33", "PSAUMES 77 V 1-4", "ESAIE 43 V 25", "EZECHIEL 20 V 44",
+            "PSAUMES 89 V 28", "PSAUMES 8 V 4-6", "AGGEE 2 V 9", "EXODE 23 V 25",
+            "DEUTERONOME 30 V 16", "PSAUMES 3 V 8", "PSAUMES 23 V 1-2", "PSAUMES 31 V 20-21",
+            "GALATES 5 V 22-23", "DEUTERONOME 28 V 1", "MATTHIEU 5 V 6", "PROVERBES 10 V 22",
+            "GENESE 27 V 29", "GENESE 12 V 3", "PSAUMES 103 V 12", "ESAIE 38 V 17",
+            "JEREMIE 17 V 7-8", "PSAUMES 20 V 5", "PROVERBES 16 V 3", "PHILIPPIENS 4 V 19",
+            "JEREMIE 29 V 11", "PSAUMES 126 V 5", "ESAIE 51 V 11", "PHILIPPIENS 4 V 6-7",
+            "PSAUMES 9 V 2", "COLOSSIENS 3 V 17", "MATTHIEU 17 V 20", "HABACUC 2 V 2-3",
+            "2 CHRONIQUE 30 V 9", "PSAUMES 23 V 1-2", "ROMAINS 12 V 14", "PROVERBES 10 V 20",
+            "LUC 6 V 27-28", "PSAUMES 23 V 3", "ESAIE 1 V 18", "JEREMIE 26 V 13",
+            "JEREMIE 26 V 12-13", "PSAUMES 50 V 14", "PSAUMES 51 V 10-12", "MALACHIE 3 V 10-11",
+            "MALACHIE 3 V 12", "MALACHIE 3 V 16-17", "JEREMIE 29 V 11", "PSAUMES 91 V 16",
+            "GENESE 12 V 2-3", "PSAUMES 71 V 13-14", "DEUTERONOME 28 V 5-6", "DEUTERONOME 28 V 1-4",
+            "JEREMIE 33 V 12-13", "DEUTERONOME 28 V 9-10", "1 CORINTHIENS 6 V 18-20",
+            "GENESE 12 V 3", "JEREMIE 30 V 17", "SOPHONIE 3 V 16-17", "PROVERBES 19 V 17",
+            "DEUTERONOME 12 V 28", "2 CORINTHIENS 5 V 17", "ZACHARIE 1 V 17", "ESAIE 54 V 5-8",
+            "JEREMIE 31 V 16-17", "JEREMIE 15 V 19", "EXODE 23 V 25", "JOB 36 V 11",
+            "MALACHIE 3 V 18", "COLOSSIENS 3 V 24", "1PIERRE 3 V 9", "DEUTERONOME 30 V 16",
+            "ESAIE 61 V 7", "JOEL 2 V 21", "JOEL 2 V 25-26", "1 THESSALONICIENS 5 V 23",
+            "JOEL 2 V 32", "DEUTERONOME 28 V 5-7", "1 SAMUEL 12 V 24", "ESAIE 12 V 2-3",
+            "DEUTERONOME 20 V 4", "MALACHIE 4 V 2", "MALACHIE 4 V 2", "2 SAMUEL 12 V 24",
+            "ESAIE 40 V 31", "2 SAMUEL 2 V 1-3", "PSAUMES 18 V 23", "PSAUMES 9 V 9-10",
+            "PSAUMES 119 V 9-11", "PSAUMES 17 V 7", "PSAUMES 33 V 18", "ESAIE 12 V 2",
+            "PSAUMES 40 V 2-3", "ESAIE 25 V 9", "JEAN 14 V 1-3", "PSAUMES 28 V 7",
+            "HEBREUX 10 V 35-36", "JACQUES 1 V 12", "HEBREUX 12 V 2-3", "JACQUES 5 V 11",
+            "MARC 11 V 24", "1 TIMOTHEE 6 V 11", "NOMBRES 23 V 8", "PSAUMES 23 V 1",
+            "PROVERBES 3 V 5-6", "ESAIE 54 V 17", "JEREMIE 29 V 11", "JEREMIE 1 V 8",
+            "MATTHIEU 6 V 33", "PHILIPPIEN 4 V 6-7","GENESE 12 V 2-3", "PSAUMES 71 V 13-14", "DEUTERONOME 28 V 5-6", "DEUTERONOME 28 V 1-4", "JEREMIE 33 V 12-13", "DEUTERONOME 28 V 9-10", "1 CORINTHIENS 6 V 18-20", "GENESE 12 V 3", "JEREMIE 30 V 17", "SOPHONIE 3 V 16-17", "PROVERBES 19 V 17", "DEUTERONOME 12 V 28", "2 CORINTHIENS 5 V 17", "ZACHARIE 1 V 17", "ESAIE 54 V 5-8", "JEREMIE 31 V 16-17", "JEREMIE 15 V 19", "EXODE 23 V 25", "JOB 36 V 11", "MALACHIE 3 V18", "COLOSSIENS 3 V 24", "1PIERRE 3 V 9", "DEUTERONOME 30 V 16", "ESAIE 61 V 7", "JOEL 2 V 21", "JOEL 2 V 25-26", "1 THESSALONICIENS 5 V 23", "JOEL 2 V 32", "DEUTERONOME 28 V 5-7", "1 SAMUEL 12 V 24", "ESAIE 12 V 2-3", "DEUTERONOME 20 V 4", "MALACHIE 4 V 2", "MALACHIE 4 V 2", "2 SAMUEL 12 V 24", "ESAIE 40 V 31", "2 SAMUEL 2 V 1-3", "PSAUMES 18 V 23", "PSAUMES 9 V 9-10", "PSAUMES 119 V 9-11", "PSAUMES 17 V 7", "PSAUMES 33 V 18", "ESAIE 12 V 2", "PSAUMES 40 V 2-3", "ESAIE 25 V 9", "JEAN 14 V 1-3", "PSAUMES 28 V 7", "HEBREUX 10 V 35-36", "JACQUES 1 V 12", "HEBREUX 12 V 2-3", "JACQUES 5 V 11", "MARC 11 V 24", "1 TIMOTHEE 6 V 11", "NOMBRES 23 V 8", "PSAUMES 23 V 1", "PROVERBES 3 V 5-6", "ESAIE 54 V 17", "JEREMIE 29 V 11", "JEREMIE 1 V 8", "MATTHIEU 6 V 33", "PHILIPPIEN 4 V 6-7"
+        ];
+ document.getElementById('generateButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * verses.length);
+            document.getElementById('verse').innerText = verses[randomIndex];
+        });
+
+    </script>
+</body>
+</html>
